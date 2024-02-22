@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./update.css";
 
 const Update = () => {
@@ -12,6 +12,9 @@ const Update = () => {
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const bookId = location.pathname.split("/")[2];
 
   const handleChange = (e) => {
     setBook((prev) => ({
@@ -23,7 +26,7 @@ const Update = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/books", book);
+      await axios.put("http://localhost:8800/books/" + bookId, book);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -58,7 +61,9 @@ const Update = () => {
         onChange={handleChange}
         name="cover"
       />
-      <button onClick={handleClick}>Add</button>
+      <button className="formButton" onClick={handleClick}>
+        Add
+      </button>
     </div>
   );
 };
