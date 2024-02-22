@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Books from "./pages/books/Books";
 import Add from "./pages/add/Add";
 import Update from "./pages/update/Update";
+import "./app.css";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <RouterProvider router={router} />
     </div>
   );
