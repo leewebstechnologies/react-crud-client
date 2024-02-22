@@ -1,7 +1,27 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Books from "./pages/books/Books";
+import Add from "./pages/add/Add";
+import Update from "./pages/update/Update";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Books />,
+  },
+  {
+    path: "/add",
+    element: <Add />,
+  },
+  {
+    path: "update",
+    element: <Update />,
+  },
+]);
+
 function App() {
   return (
     <div>
-      <h1>Hello World!</h1>
+      <RouterProvider router={router} />
     </div>
   );
 }
